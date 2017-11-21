@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import {  } from 'ea-shared/models';
+import { ServerMessage } from 'ea-shared/models';
 
 @Injectable()
 export class WebsocketClientService {
