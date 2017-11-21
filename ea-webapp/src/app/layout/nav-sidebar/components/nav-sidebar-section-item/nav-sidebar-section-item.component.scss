@@ -1,0 +1,10 @@
+@import 'variables';
+
+section {
+    position: absolute;
+    background-color: $darkBackground;
+    left: 70px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}

@@ -1,0 +1,18 @@
+@import 'variables';
+
+#app-body {
+    display: flex;
+    position: relative;
+    margin-left: 260px;
+}
+
+app-nav-sidebar {
+    position: fixed;
+    top: $headerHeight;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $darkerBackground;
+    color: white;
+    width: 260px;
+}

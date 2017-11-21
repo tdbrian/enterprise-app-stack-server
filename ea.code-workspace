@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "ea-webapp"
+		},
+		{
+			"path": "ea-server"
+		},
+		{
+			"path": "ea-shared"
+		}
+	],
+	"settings": {
+		"cSpell.words": [
+			"Okta",
+			"dropdown",
+			"gmail",
+			"tdbrian",
+			"typegoose"
+		]
+	}
+}

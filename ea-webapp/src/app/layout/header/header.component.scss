@@ -1,0 +1,63 @@
+@import 'variables';
+
+$iconSize: 16px;
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: $headerHeight;
+    background-color: white;
+}
+
+#left-header {
+    display: flex;
+    width: 260px;
+    height: $headerHeight;
+    background-color: $lightPrimary;
+}
+
+#corner-logo {
+    height: $headerHeight;
+    width: $headerHeight;
+    background-color: #0061dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#left-header-options {
+    flex-grow: 1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+        margin: 0 12px;
+        opacity: .8;
+        font-size: $iconSize;
+        transition: 300ms ease-in;
+        cursor: pointer;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+#right-header {
+    display: flex;
+    align-items: center;
+    margin: 0 12px;
+    height: $headerHeight;
+    font-size: $iconSize;
+
+    i {
+        opacity: .8;
+        margin: 0 12px;
+        cursor: pointer;
+        transition: 300ms ease-in;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

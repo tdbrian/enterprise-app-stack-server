@@ -1,0 +1,149 @@
+<div>
+    <app-nav-sidebar-item 
+        label="Dashboard" 
+        icon="newspaper" 
+        [link]="['/dashboard']"></app-nav-sidebar-item>
+
+   <app-nav-sidebar-item 
+        label="Apps" 
+        icon="tablet" 
+        [link]="['/apps']"></app-nav-sidebar-item>
+ 
+    <app-nav-sidebar-item 
+        label="Services" 
+        icon="rss" 
+        [link]="['/services']"></app-nav-sidebar-item>
+
+    <app-nav-sidebar-item 
+        label="Business" 
+        icon="globe" 
+        [link]="['/business']"></app-nav-sidebar-item>
+
+    <app-nav-sidebar-item 
+        label="Users" 
+        icon="id-card" 
+        [link]="['/users']"></app-nav-sidebar-item>
+
+    <app-nav-sidebar-item 
+        label="Quality Assurance" 
+        icon="bug" 
+        [link]="['/quality-assurance']"></app-nav-sidebar-item>
+ 
+    <app-nav-sidebar-item 
+        label="Monitoring" 
+        icon="tachometer" 
+        [link]="['/monitoring']"></app-nav-sidebar-item>
+
+    <app-nav-sidebar-item 
+        label="Analytics" 
+        icon="lightbulb" 
+        [link]="['/analytics']"></app-nav-sidebar-item>
+
+    <app-nav-sidebar-item 
+        label="Settings" 
+        icon="sliders-v" 
+        [link]="['/settings']"></app-nav-sidebar-item>
+
+    <app-nav-sidebar-item 
+        label="Account" 
+        icon="key" 
+        [link]="['/account']"></app-nav-sidebar-item>
+</div>
+
+<!-- Apps Menu -->
+<div class="sub-section" *ngIf="nav.subSectionOpened && sectionIsSelected('/apps')">
+    <h2>Apps</h2>
+    <a [routerLink]="'/apps/list'" routerLinkActive="active">All Apps</a>
+    <h2>Pinned Apps</h2>
+    <a [routerLink]="'/'">Business Portal</a>
+    <a [routerLink]="'/'">Supportal</a>
+    <a [routerLink]="'/'">Customer Portal</a>
+</div>
+
+<!-- Services Menu -->
+<div class="sub-section" *ngIf="nav.subSectionOpened && sectionIsSelected('/services')">
+    <h2>Services</h2>
+    <a [routerLink]="'/'">All Services</a>
+    <h2>My Pinned APIs</h2>
+    <a [routerLink]="'/'">AppRiver Users</a>
+    <a [routerLink]="'/'">AppRiver ConnectWise</a>
+    <h2>Integrated APIs</h2> 
+    <a [routerLink]="'/'">All Integrated APIs</a>
+    <a [routerLink]="'/'">Add Prebuilt Integration</a>
+</div>
+
+<!-- Business Menu -->
+<div class="sub-section" *ngIf="nav.subSectionOpened && sectionIsSelected('/business')">
+    <h2>Business Domains</h2>
+    <a [routerLink]="'/'">Dashboard</a>
+    <a [routerLink]="'/'">Departments</a>
+    <a [routerLink]="'/'">Processes</a>
+    <a [routerLink]="'/'">Rules</a>
+    <h2>Departments</h2>
+    <a [routerLink]="'/'">Sales</a>
+    <a [routerLink]="'/'">Support</a>
+    <a [routerLink]="'/'">Customer Care</a>
+    <a [routerLink]="'/'">Billing</a>
+</div>
+
+<!-- Users Menu -->
+<div class="sub-section" *ngIf="nav.subSectionOpened && sectionIsSelected('/users')">
+    <h2>Users</h2>
+    <a [routerLink]="'/'">All Users</a>
+    <a [routerLink]="'/'">Roles</a>
+    <a [routerLink]="'/'"></a>
+</div>
+
+<!-- Quality Assurance Menu -->
+<div class="sub-section" *ngIf="nav.subSectionOpened && sectionIsSelected('/quality-assurance')">
+    <h2>Quality Assurance</h2>
+    <a [routerLink]="'/'">Manual Test Cases</a>
+    <a [routerLink]="'/'">Known Bugs</a>
+    <a [routerLink]="'/'">Unit &amp; System Tests</a>
+    <a [routerLink]="'/'">Automated UI Testing</a>
+</div>
+
+<!-- Monitoring Menu -->
+<div class="sub-section" *ngIf="nav.subSectionOpened && sectionIsSelected('/monitoring')">
+    <h2>Monitoriong</h2>
+    <a [routerLink]="'/'">User Monitoring</a>
+    <a [routerLink]="'/'">Security Auditing</a>
+    <a [routerLink]="'/'">App Logs</a>
+    <a [routerLink]="'/'">System Logs</a>
+    <a [routerLink]="'/'">Process Logs</a>
+    <a [routerLink]="'/'">Performance Logs</a>
+</div>
+
+<!-- Analytics Menu -->
+<div class="sub-section" *ngIf="nav.subSectionOpened && sectionIsSelected('/analytics')">
+    <h2>Reporting</h2>
+    <a [routerLink]="'/'">All Reports</a>
+    <a [routerLink]="'/'">User Reports</a>
+    <a [routerLink]="'/'">Audit Reports</a>
+    <h2>Analytics</h2>
+    <a [routerLink]="'/'">Sales</a>
+    <a [routerLink]="'/'">Marketing</a>
+</div>
+
+<!-- Settings Menu -->
+<div class="sub-section" *ngIf="nav.subSectionOpened && sectionIsSelected('/settings')">
+    <h2>My Settings</h2>
+    <a [routerLink]="'/'">Information</a>
+    <a [routerLink]="'/'">Security</a>
+    <h2>System Settings</h2>
+    <a [routerLink]="'/'">User Permissions</a>
+    <a [routerLink]="'/'">Service Limits</a>
+    <h2>Organization Settings</h2>
+    <a [routerLink]="'/'">Information</a>
+    <a [routerLink]="'/'">Users</a>
+</div>
+
+<!-- Account Menu -->
+<div class="sub-section" *ngIf="nav.subSectionOpened && sectionIsSelected('/account')">
+    <h2>My Account</h2>
+    <a [routerLink]="'/'">My Usage</a>
+    <h2>Organization Account</h2>
+    <a [routerLink]="'/'">Billing</a>
+    <a [routerLink]="'/'">Usage</a>
+    <a [routerLink]="'/'">Support</a>
+</div>

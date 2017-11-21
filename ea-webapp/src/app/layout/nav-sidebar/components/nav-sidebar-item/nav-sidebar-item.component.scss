@@ -1,0 +1,40 @@
+@import 'variables';
+
+.sidebar-item {
+    color: white;
+    display: flex;
+    align-items: center;
+    height: $navSidebarItemHeight;
+    opacity: .6;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+
+    i {
+      font-size: 18px;
+    }
+
+    &.active {
+      opacity: 1;
+      .sidebar-tab.sidebar-opened {
+        background-color: $darkBackground;
+      }
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    .sidebar-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $headerHeight;
+      height: $navSidebarItemHeight;
+    }
+  
+    .sidebar-label {
+      font-weight: 400;
+      font-size: 14px;
+      margin: 20px;
+    }
+  }

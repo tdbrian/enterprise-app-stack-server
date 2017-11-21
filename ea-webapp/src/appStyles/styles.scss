@@ -1,0 +1,35 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F4F6F9;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+table {
+    font-size: 14px;
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  min-height: 200px;
+  padding: 20px 5px;
+  h1.panel-label {
+    font-weight: 300;
+    font-size: 26px;
+    color: #006fff;
+  }
+}
+
+.panel {
+  background-color: white;
+  padding: 20px;
+}
