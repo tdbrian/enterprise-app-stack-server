@@ -5,9 +5,7 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "package-lock.json": true,
-        "tsconfig.json": false,
         ".gitignore": true,
-        "tslint.json": true
+        "tsconfig.json": true
     }
 }

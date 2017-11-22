@@ -2,7 +2,7 @@
   "name": "ea-shared",
   "version": "1.0.0",
   "description": "Shared types, functions required by other Enterprise Application Stack projects.",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

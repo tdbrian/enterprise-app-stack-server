@@ -12,9 +12,11 @@
 	],
 	"settings": {
 		"cSpell.words": [
+			"Dtos",
 			"Okta",
 			"dropdown",
 			"gmail",
+			"nestjs",
 			"tdbrian",
 			"typegoose"
 		]
