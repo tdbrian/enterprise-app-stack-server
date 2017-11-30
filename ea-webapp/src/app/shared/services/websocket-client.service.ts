@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { ServerMessage } from 'ea-shared';
 
 @Injectable()
 export class WebsocketClientService {
@@ -12,7 +11,7 @@ export class WebsocketClientService {
     this.startConnection();
   }
 
-  sendMessage(message: ServerMessage) {
+  sendMessage(message: string) {
     const msgString = JSON.stringify(message);
     if (this.socketOpen === true) {
       this.esEngineWs.send(msgString);
