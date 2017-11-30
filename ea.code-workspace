@@ -18,7 +18,8 @@
 			"gmail",
 			"nestjs",
 			"tdbrian",
-			"typegoose"
+			"typegoose",
+			"upsert"
 		]
 	}
 }

@@ -1,13 +1,13 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import registerRoutes from './routes';
-import db from './db';
+import { connectPromise } from './db';
 
 const app = express();
 app.use(bodyParser.json());
 app.get('/', (req, res) => res.send({ status: 'Server running' }));
 
-db.then(() => {
+connectPromise.then(() => {
     registerRoutes(app);
 
     const port = 3001;
