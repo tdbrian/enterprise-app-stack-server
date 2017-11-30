@@ -1,10 +1,15 @@
-import { NestFactory } from '@nestjs/core';
-import { ApplicationModule } from './modules/server.module';
-import * as bodyParser from "body-parser";
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import registerRoutes from './routes';
+import db from './db';
 
-async function bootstrap() {
-  const app = await NestFactory.create(ApplicationModule);
-  app.use(bodyParser.json());
-  await app.listen(3001);
-}
-bootstrap().catch(err => console.error(err));
+const app = express();
+app.use(bodyParser.json());
+app.get('/', (req, res) => res.send({ status: 'Server running' }));
+
+db.then(() => {
+    registerRoutes(app);
+
+    const port = 3001;
+    app.listen(port, () => console.info(`Server started at http://localhost:${port}`));
+});
