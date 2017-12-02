@@ -1,0 +1,17 @@
+{ // launch.json
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Program",
+            "type": "node",
+            "request": "launch",
+            "protocol": "inspector",
+            // Use ts-node as drop-in replacement for node
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node",
+            // Manually specify the args to pass
+            "runtimeArgs": [
+                "${workspaceRoot}/src/server.ts"
+            ]
+        }
+    ]
+}
