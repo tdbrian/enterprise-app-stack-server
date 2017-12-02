@@ -10,5 +10,8 @@
     "email": "tdbrian@gmail.com",
     "name": "Thomas Brian"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "validator.ts": "^0.2.2"
+  }
 }

@@ -12,14 +12,15 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "moduleResolution": "node",
+        "experimentalDecorators": true,
         "sourceMap": true,
         "inlineSources": true,
         "types": [
             "node"
-        ],
-        "experimentalDecorators": true
+        ]
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "index.ts"
     ]
 }

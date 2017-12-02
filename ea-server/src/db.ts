@@ -12,3 +12,5 @@ connectPromise
         this.Db = _db;
     })
     .catch(error => console.error(error));
+
+export const getAppsCollection = () =>  db.collection('applications');

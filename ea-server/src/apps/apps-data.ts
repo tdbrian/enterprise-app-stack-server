@@ -1,18 +1,12 @@
-import { db } from "../db";
-import Application from "./application";
-
-const appCollection = db.collection('applications');
+import { getAppsCollection } from '../db';
+import { Application } from 'ea-shared';
 
 export function getAll(): Promise<Application[]> {
-    return appCollection.find<Application>({}).toArray();
+    return getAppsCollection().find<Application>({}).toArray();
 }
 
-export function saveApplication(app: Application): Promise<Application> {
-    return new Promise<Application>((res, rej) => {
-        appCollection.findOneAndUpdate({ name: app.name }, app, { upsert: true, returnOriginal: false }, (err, app) => {
-            if (err) return rej(err);
-            if (!app.ok) return rej(app.lastErrorObject);
-            else res(app.value);
-        })
-    });
+export async function saveApplication(app: Application): Promise<Application> {
+    return getAppsCollection()
+        .findOneAndUpdate({ name: app.name }, app, { upsert: true, returnOriginal: false })
+        .then(app => app.value);
 }
