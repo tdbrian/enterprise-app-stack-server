@@ -9,7 +9,7 @@ export const connectPromise = MongoClient.connect(url);
 connectPromise
     .then(_db => {
         console.log(`Connected successfully to mongodb ${dbName}`);
-        this.Db = _db;
+        this.db = _db;
     })
     .catch(error => console.error(error));
 
