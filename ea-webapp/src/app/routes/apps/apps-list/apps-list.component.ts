@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { App } from '../app.model';
+
+const appsUrl = '/api/v1/apps';
 
 @Component({
   selector: 'app-apps-list',
@@ -6,10 +10,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./apps-list.component.scss']
 })
 export class AppsListComponent implements OnInit {
+  apps: App[];
+  errorLoadingApps = false;
+  isLoadingApps = false;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    try {
+      this.isLoadingApps = true;
+      this.errorLoadingApps = false;
+      this.apps = await this.http.get<App[]>(appsUrl).toPromise();
+    } catch (error) {
+      this.errorLoadingApps = true;
+    } finally {
+      this.isLoadingApps = false;
+    }
   }
-
 }

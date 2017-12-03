@@ -1,8 +1,9 @@
 import * as express from 'express';
 import { getAppsCollection } from '../db';
-import { Application, validateApplication, httpStatusCodes } from 'ea-shared';
 import * as _ from 'lodash';
 import { ObjectID } from "mongodb";
+import { Application, validateApplication } from './application';
+import { httpStatusCodes } from '../http-status-codes';
 
 const router = express.Router();
 

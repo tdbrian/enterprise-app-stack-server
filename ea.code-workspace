@@ -5,9 +5,6 @@
 		},
 		{
 			"path": "ea-server"
-		},
-		{
-			"path": "ea-shared"
 		}
 	],
 	"settings": {

@@ -10,7 +10,7 @@
         "karma.conf.js": true,
         "protractor.conf.js": true,
         "tslint.json": true,
-        "tsconfig.json": true,
+        "tsconfig.json": false,
         "package-lock.json": true,
         "src/typings.d.ts": true,
         "src/tsconfig.app.json": true,

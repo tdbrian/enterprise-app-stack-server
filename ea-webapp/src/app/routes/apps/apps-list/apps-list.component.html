@@ -12,8 +12,10 @@
               <h1 class="panel-label">All Apps</h1>
             </div>
             <div class="col-6 text-right">
-              <button class="btn btn-primary btn-sm">
-                <i class="far fa-plus-circle"></i> New App</button>
+              <a class="btn btn-primary btn-sm" [routerLink]="'../new'">
+                <i class="far fa-plus-circle"></i> 
+                New App
+              </a>
             </div>
           </div>
 
@@ -24,29 +26,17 @@
                 <thead>
                   <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Short Description</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Application Type</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Customer Billing Area</td>
-                    <td>The app where customers and partners can pay their bills.</td>
+                  <tr *ngFor="let app of apps">
+                    <td>{{app.name}}</td>
+                    <td>{{app.description}}</td>
                     <td>Web Application</td>
                     <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <td>Customer Services Area</td>
-                    <td>Where customers manage their services.</td>
-                    <td>Web Application</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <td>Partner Portal</td>
-                    <td>Where partners manage their own partners.</td>
-                    <td>Web Application</td>
-                    <td>@twitter</td>
                   </tr>
                 </tbody>
               </table>
