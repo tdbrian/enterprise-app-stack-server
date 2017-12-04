@@ -22,21 +22,30 @@
           <!-- Table -->
           <div class="row">
             <div class="col">
-              <table class="table table-hover">
+              <table class="table">
                 <thead>
                   <tr>
+                    <th scope="col">Type</th>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Application Type</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let app of apps">
+                    <td>
+                      <i class="far fa-desktop"></i>
+                    </td>
                     <td>{{app.name}}</td>
                     <td>{{app.description}}</td>
-                    <td>Web Application</td>
-                    <td>@mdo</td>
+                    <td class="text-right">
+                      <div>
+                        <button class="btn btn-sm btn-outline-secondary" title="View"><i class="far fa-browser"></i></button>
+                        <button class="btn btn-sm btn-outline-secondary" title="Save as favorite"><i class="far fa-heart"></i></button>
+                        <button class="btn btn-sm btn-outline-secondary" title="Settings"><i class="far fa-cog"></i></button>
+                        <button class="btn btn-sm btn-primary" title="Edit App"><i class="far fa-pen"></i></button>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>

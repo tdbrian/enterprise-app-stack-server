@@ -11,6 +11,9 @@ export class Application {
     @IsLength(2, 400)
     description: string;
 
+    @IsLength(2, 60)
+    type: string;
+
     createdDate: Date;
 
     @IsLength(2, 120)

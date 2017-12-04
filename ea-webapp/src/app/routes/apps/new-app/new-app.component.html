@@ -31,14 +31,31 @@
                   </div>
                   <div class="form-group">
                     <label for="appDescriptionInput">App description</label>
-                    <textarea #description="ngModel" id="appDescriptionInput" name="description" class="form-control" placeholder="About my new project" rows="3" cols=""
-                      [(ngModel)]="app.description" minlength="2" maxlength="400">
+                    <textarea #description="ngModel" id="appDescriptionInput" name="description" class="form-control" placeholder="About my new project"
+                      rows="3" cols="" [(ngModel)]="app.description" minlength="2" maxlength="400">
                     </textarea>
+                  </div>
+                  <hr>
+                  <label>Application Type</label>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="applicationType" id="webapp-radio" 
+                        [value]="'webapp'" [(ngModel)]="app.type" checked> 
+                      Web User Interface Application
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="applicationType" id="webservice-radio" 
+                        [value]="'api'" [(ngModel)]="app.type"> 
+                      Web Service
+                    </label>
                   </div>
                   <div class="alert alert-danger" role="alert" *ngIf="errorCreatingApp">
                     <i class="far fa-exclamation-triangle"></i>
                     Sorry, there was an error creating this new app.
                   </div>
+                  <hr>
                   <a type="button" class="btn btn-secondary" [routerLink]="'../list'">Cancel</a>
                   <button type="submit" class="btn btn-primary">
                     <i class="far fa-spinner-third" *ngIf="isCreatingApp"></i>
@@ -56,4 +73,3 @@
 
   </div>
 </div>
-

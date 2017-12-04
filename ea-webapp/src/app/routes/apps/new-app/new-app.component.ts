@@ -16,7 +16,7 @@ export class NewAppComponent {
   isCreatingApp = false;
 
   constructor(private http: HttpClient) {
-    this.app = {} as App;
+    this.app = { type: 'webapp' } as App;
   }
 
   async createApp(f: NgForm) {
