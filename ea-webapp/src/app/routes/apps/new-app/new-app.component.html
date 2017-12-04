@@ -17,19 +17,34 @@
             <div class="col-8">
 
               <!-- Create new app form -->
-              <form (onsubmit)="createApp()">
-                <div class="form-group">
-                  <label for="appNameInput">App name*</label>
-                  <input type="text" class="form-control" id="appNameInput" required 
-                    [(ngModel)]="app.name" placeholder="My New Project">
-                  <small class="form-text text-muted">It's fine to have spaces</small>
-                </div>
-                <div class="form-group">
-                  <label for="appDescriptionInput">App description</label>
-                  <textarea class="form-control" id="appDescriptionInput" placeholder="About my new project" rows="3" cols=""></textarea>
-                </div>
-                <a type="button" class="btn btn-secondary" [routerLink]="'../list'">Cancel</a>
-                <button type="submit" class="btn btn-primary" [disabled]="isCreatingApp">Add App</button>
+              <form #createAppForm="ngForm" (ngSubmit)="createApp(createAppForm)" [class.was-validated]="createAppForm.submitted" novalidate>
+                <fieldset [disabled]="isCreatingApp">
+                  <div class="form-group">
+                    <label for="appNameInput">App name*</label>
+                    <input #name="ngModel" id="appNameInput" type="text" name="name" class="form-control" [(ngModel)]="app.name" placeholder="My New Project"
+                      required minlength="2" maxlength="120">
+                    <small class="form-text text-muted">It's fine to have spaces</small>
+                    <div *ngIf="!name.valid && createAppForm.submitted" class="invalid-feedback">
+                      <i class="far fa-exclamation-triangle"></i>
+                      Name is required and must be between 2 and 120 characters long
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="appDescriptionInput">App description</label>
+                    <textarea #description="ngModel" id="appDescriptionInput" name="description" class="form-control" placeholder="About my new project" rows="3" cols=""
+                      [(ngModel)]="app.description" minlength="2" maxlength="400">
+                    </textarea>
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="errorCreatingApp">
+                    <i class="far fa-exclamation-triangle"></i>
+                    Sorry, there was an error creating this new app.
+                  </div>
+                  <a type="button" class="btn btn-secondary" [routerLink]="'../list'">Cancel</a>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="far fa-spinner-third" *ngIf="isCreatingApp"></i>
+                    Create App
+                  </button>
+                </fieldset>
               </form>
 
             </div>
@@ -41,3 +56,4 @@
 
   </div>
 </div>
+

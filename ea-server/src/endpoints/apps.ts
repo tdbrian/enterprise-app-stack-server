@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import { ObjectID } from "mongodb";
 import { Application, validateApplication } from './application';
 import { httpStatusCodes } from '../http-status-codes';
+import { DateTime } from 'luxon';
 
 const router = express.Router();
 
@@ -27,6 +28,10 @@ router.get('/:id', ({ params }, res) => {
 });
 
 router.post('/', ({ body }, res) => {
+    let app = body as Application;
+    app.deleted = false;
+    app.createdDate = DateTime.utc().toString();
+    app.createdBy = 'Thomas Brian';
     const validationErrors = validateApplication(body);
     if (validationErrors.length > 0) return res.status(httpStatusCodes.invalidInput).send(validationErrors);
     getAppsCollection().insertOne(body).then(

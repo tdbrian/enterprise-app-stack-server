@@ -15,12 +15,11 @@
   "license": "MIT",
   "dependencies": {
     "@types/lodash": "^4.14.86",
-    "@types/moment": "^2.13.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "fs-extra": "^4.0.2",
     "lodash": "^4.17.4",
-    "moment": "^2.19.3",
+    "luxon": "^0.2.5",
     "mongodb": "^2.2.33",
     "reflect-metadata": "^0.1.10",
     "validator.ts": "^0.2.2",
