@@ -7,8 +7,7 @@ const appsUrl = '/api/v1/apps';
 
 @Component({
   selector: 'app-new-app',
-  templateUrl: './new-app.component.html',
-  styleUrls: ['./new-app.component.scss']
+  templateUrl: './new-app.component.html'
 })
 export class NewAppComponent {
   app: App;

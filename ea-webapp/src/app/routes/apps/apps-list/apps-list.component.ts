@@ -6,8 +6,7 @@ const appsUrl = '/api/v1/apps';
 
 @Component({
   selector: 'app-apps-list',
-  templateUrl: './apps-list.component.html',
-  styleUrls: ['./apps-list.component.scss']
+  templateUrl: './apps-list.component.html'
 })
 export class AppsListComponent implements OnInit {
   apps: App[];
