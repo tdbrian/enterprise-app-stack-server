@@ -9,7 +9,7 @@ import { DateTime } from 'luxon';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    getAppsCollection().find<Application>({}).toArray().then(
+    getAppsCollection().find<Application>({ deleted: false }).toArray().then(
         apps => res.send(apps),
         err => res.status(httpStatusCodes.error).send('Error getting apps list')
     );
@@ -43,11 +43,12 @@ router.post('/', ({ body }, res) => {
 router.patch('/:id', ({ body, params }, res) => {
     if (!params.id) return res.status(httpStatusCodes.invalidInput).send('App name is required');
     let _id = new ObjectID(params.id);
+    body = _.omit(body, ['_id']);   
     const validationErrors = validateApplication(body);
     if (validationErrors.length > 0) return res.status(httpStatusCodes.invalidInput).send(validationErrors);
     getAppsCollection().findOneAndUpdate({ _id }, body, { upsert: true, returnOriginal: false }).then(
         app => res.send(app.value),
-        err => res.status(httpStatusCodes.error).send('Error updating application')
+        err => res.status(httpStatusCodes.error).send(err)
     );
 });
 

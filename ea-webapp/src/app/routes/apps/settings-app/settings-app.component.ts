@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { App } from '../app.model';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router/src/router';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const appsUrl = '/api/v1/apps';
 
@@ -18,8 +17,14 @@ export class SettingsAppComponent implements OnInit {
   isSavingApp = false;
   errorSavingApp = false;
   errorGettingApp = false;
+  confirmAppName = '';
+  confirmAppNameError = false;
 
-  constructor(private http: HttpClient, private activeRoute: ActivatedRoute) {
+  constructor(
+    private http: HttpClient,
+    private activeRoute: ActivatedRoute,
+    private router: Router
+  ) {
     this.app = {} as App;
   }
 
@@ -38,7 +43,25 @@ export class SettingsAppComponent implements OnInit {
     try {
       this.isSavingApp = true;
       this.errorSavingApp = false;
-      await this.http.patch<App[]>(appsUrl, this.app).toPromise();
+      await this.http.patch<App[]>(`${appsUrl}/${this.app._id}`, this.app).toPromise();
+    } catch (error) {
+      this.errorSavingApp = true;
+    } finally {
+      this.isSavingApp = false;
+    }
+  }
+
+  async deleteApp(f: NgForm) {
+    this.confirmAppNameError = false;
+    if (!f.valid) { return; }
+    if (this.confirmAppName !== this.app.name) {
+      return this.confirmAppNameError = true;
+    }
+    try {
+      this.isSavingApp = true;
+      this.errorSavingApp = false;
+      await this.http.delete<App[]>(`${appsUrl}/${this.app._id}`).toPromise();
+      this.router.navigateByUrl('/list');
     } catch (error) {
       this.errorSavingApp = true;
     } finally {

@@ -1,59 +1,103 @@
 <div class="page">
-    <div class="container-fluid">
-  
-      <!-- Apps list -->
-      <div class="row">
-        <div class="col">
-          <div class="panel">
-  
-            <!-- Header -->
-            <div class="row mb-3">
-              <div class="col-6">
-                <h1 class="panel-label">App Settings</h1>
-              </div>
+  <div class="container-fluid">
+
+    <!-- Apps list -->
+    <div class="row">
+      <div class="col">
+        <div class="panel">
+
+          <!-- Header -->
+          <div class="row mb-3">
+            <div class="col-6">
+              <h1 class="panel-label">App Settings</h1>
             </div>
-  
-            <div class="row justify-content-center">
-              <div class="col-8">
-  
-                <!-- Create new app form -->
-                <form #appSettingsForm="ngForm" (ngSubmit)="saveApp(appSettingsForm)" [class.was-validated]="appSettingsForm.submitted" novalidate>
-                  <fieldset [disabled]="isSavingApp">
-                    <div class="form-group">
-                      <label for="appNameInput">App name*</label>
-                      <input #name="ngModel" id="appNameInput" type="text" name="name" class="form-control" [(ngModel)]="app.name"
-                        required minlength="2" maxlength="120">
-                      <small class="form-text text-muted">It's fine to have spaces</small>
-                      <div *ngIf="!name.valid && appSettingsForm.submitted" class="invalid-feedback">
-                        <i class="far fa-exclamation-triangle"></i>
-                        Name is required and must be between 2 and 120 characters long
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="appDescriptionInput">App description</label>
-                      <textarea #description="ngModel" id="appDescriptionInput" name="description" class="form-control"
-                        rows="3" cols="" [(ngModel)]="app.description" minlength="2" maxlength="400">
-                      </textarea>
-                    </div>
-                    <div class="alert alert-danger" role="alert" *ngIf="errorSavingApp">
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-8 text-center" *ngIf="isLoadingApp">
+              <i class="far fa-spin fa-3x fa-spinner-third mt-5 mb-5"></i>
+            </div>
+
+            <div class="col-8" *ngIf="!isLoadingApp">
+              <!-- Create new app form -->
+              <form #appSettingsForm="ngForm" (ngSubmit)="saveApp(appSettingsForm)" [class.was-validated]="appSettingsForm.submitted" novalidate>
+                <fieldset [disabled]="isSavingApp">
+                  <div class="form-group">
+                    <label for="appNameInput">App name*</label>
+                    <input #name="ngModel" id="appNameInput" type="text" name="name" class="form-control" [(ngModel)]="app.name" required minlength="2"
+                      maxlength="120">
+                    <small class="form-text text-muted">It's fine to have spaces</small>
+                    <div *ngIf="!name.valid && appSettingsForm.submitted" class="invalid-feedback">
                       <i class="far fa-exclamation-triangle"></i>
-                      Sorry, there was an saving the app settings.
+                      Name is required and must be between 2 and 120 characters long
                     </div>
-                    <hr>
-                    <a type="button" class="btn btn-secondary" [routerLink]="'../../list'">Cancel</a>
-                    <button type="submit" class="btn btn-primary">
-                      <i class="far fa-spinner-third" *ngIf="isSavingApp"></i>
-                      Save Setting
-                    </button>
-                  </fieldset>
-                </form>
-  
-              </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="appDescriptionInput">App description</label>
+                    <textarea #description="ngModel" id="appDescriptionInput" name="description" class="form-control" rows="3" cols="" [(ngModel)]="app.description"
+                      minlength="2" maxlength="400">
+                  </textarea>
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="errorSavingApp">
+                    <i class="far fa-exclamation-triangle"></i>
+                    Sorry, there was an saving the app settings.
+                  </div>
+                  <a type="button" class="btn btn-secondary" [routerLink]="'../../list'">Cancel</a>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="far fa-spin fa-spinner-third" *ngIf="isSavingApp"></i>
+                    Save Setting
+                  </button>
+                </fieldset>
+              </form>
+
             </div>
-  
           </div>
         </div>
+
+        <div class="panel mt-4">
+
+          <!-- Header -->
+          <div class="row mb-3">
+            <div class="col-6">
+              <h1 class="panel-label" style="color:red;">Delete App</h1>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+
+            <div class="col-8" *ngIf="!isLoadingApp">
+              <!-- Create new app form -->
+              <form #appDeleteForm="ngForm" (ngSubmit)="deleteApp(appDeleteForm)" [class.was-validated]="appDeleteForm.submitted" novalidate>
+                <fieldset [disabled]="isSavingApp">
+                  <div class="form-group">
+                    <label for="appNameInput">Confirm app name</label>
+                    <input #name="ngModel" id="appNameInput" type="text" name="name" class="form-control" [(ngModel)]="confirmAppName" required
+                      minlength="2" maxlength="120">
+                    <small class="form-text text-muted">Enter the exact name of the app "<b>{{app?.name}}</b>" to confirm it should be deleted.</small>
+                    <div *ngIf="!name.valid && appDeleteForm.submitted" class="invalid-feedback">
+                      <i class="far fa-exclamation-triangle"></i>
+                      Name is required and must be between 2 and 120 characters long
+                    </div>
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="confirmAppNameError">
+                    <i class="far fa-exclamation-triangle"></i>
+                    The entered name does not match the acutal name.
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="errorSavingApp">
+                    <i class="far fa-exclamation-triangle"></i>
+                    Sorry, there was an deleting the app.
+                  </div>
+                  <button type="submit" class="btn btn-danger">
+                    <i class="far fa-spin fa-spinner-third" *ngIf="isSavingApp"></i>
+                    Delete App
+                  </button>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-  
     </div>
   </div>

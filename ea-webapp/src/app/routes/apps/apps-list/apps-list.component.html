@@ -13,7 +13,7 @@
             </div>
             <div class="col-6 text-right">
               <a class="btn btn-primary btn-sm" [routerLink]="'../new'">
-                <i class="far fa-plus-circle"></i> 
+                <i class="far fa-plus-circle"></i>
                 New App
               </a>
             </div>
@@ -21,7 +21,11 @@
 
           <!-- Table -->
           <div class="row">
-            <div class="col">
+            <div class="col text-center" *ngIf="isLoadingApps">
+              <i class="far fa-spin fa-3x fa-spinner-third mt-5 mb-5"></i>
+            </div>
+
+            <div class="col" *ngIf="!isLoadingApps">
               <table class="table">
                 <thead>
                   <tr>
@@ -40,10 +44,18 @@
                     <td>{{app.description}}</td>
                     <td class="text-right">
                       <div>
-                        <button class="btn btn-sm btn-outline-secondary" title="View"><i class="far fa-browser"></i></button>
-                        <button class="btn btn-sm btn-outline-secondary" title="Save as favorite"><i class="far fa-heart"></i></button>
-                        <a class="btn btn-sm btn-outline-secondary" title="Settings" [routerLink]="['../settings', app._id]"><i class="far fa-cog"></i></a>
-                        <a class="btn btn-sm btn-primary" title="Edit App" [routerLink]="['../edit', app._id]"><i class="far fa-pen"></i></a>
+                        <button class="btn btn-sm btn-outline-secondary" title="View">
+                          <i class="far fa-browser"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" title="Save as favorite">
+                          <i class="far fa-heart"></i>
+                        </button>
+                        <a class="btn btn-sm btn-outline-secondary" title="Settings" [routerLink]="['../settings', app._id]">
+                          <i class="far fa-cog"></i>
+                        </a>
+                        <a class="btn btn-sm btn-primary" title="Edit App" [routerLink]="['../edit', app._id]">
+                          <i class="far fa-pen"></i>
+                        </a>
                       </div>
                     </td>
                   </tr>
